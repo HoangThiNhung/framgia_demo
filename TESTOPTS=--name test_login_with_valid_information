@@ -1,0 +1,15 @@
+Started with run options --seed 33319
+
+
+
+Progress: |[0m[1000D[KERROR["test_login_with_valid_information", UsersLoginTest, 2015-11-02 07:41:56 +0700]
+ test_login_with_valid_information#UsersLoginTest (1446424916.81s)
+NoMethodError:         NoMethodError: undefined method `bbefore_save' for #<Class:0x00000005141108>
+            app/models/user.rb:3:in `<class:User>'
+            app/models/user.rb:1:in `<top (required)>'
+
+====================================================================|
+
+Finished in 0.00815s
+1 tests, 0 assertions, 0 failures, 1 errors, 0 skips
+]2;[Minitest results] 1 tests
