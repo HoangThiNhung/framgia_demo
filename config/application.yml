@@ -1,0 +1,6 @@
+api_key: 'API Key'
+domain: 'Domain'
+username: 'Default SMTP Login'
+password: 'Default Password'
+SENDGRID_USERNAME: 'linhnhungnguyen94@gmail.com'
+SENDGRID_PASSWORD: 'nhung1609'
