@@ -16,8 +16,8 @@ class MicropostsController < ApplicationController
   	def destroy
   		@micropost.destroy
 	    flash[:success] = "Micropost deleted"
-	    #redirect_to root_url
-	    redirect_to :back
+	    redirect_to request.referrer || root_url
+	    #redirect_to :back
   	end
 
   	def show
