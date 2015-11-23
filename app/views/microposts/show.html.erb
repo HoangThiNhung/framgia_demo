@@ -1,14 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @micropost.content %>
-</p>
+<div class="microposts-display">
+	<div class="row">
+		<div class="col-md-6">
+			<br>
+			<div class="title"><%= @microposts.title %>
+				<span class="timestamp">
+				    Posted <%= time_ago_in_words(@microposts.created_at) %> ago. 
+				    By <span class="user"><strong><%= link_to @microposts.user.name, @microposts.user %></strong>
+				    </span>
+				    <% if current_user?(@microposts.user) %>
+				      <%= link_to "delete", @microposts , method: :delete,
+				                                       data: { confirm: "You sure?" } %>
+				    <% end %>
+				</span>
+			</div>
+			
+			<div class="content">
+				<%= @microposts.content %>
+				<div class="img-reponsive">
+					<%= image_tag @microposts.picture.url if @microposts.picture? %>
+				</div>
+			</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @micropost.user_id %>
-</p>
+			<% if logged_in? %>
 
-<%= link_to 'Edit', edit_micropost_path(@micropost) %> |
-<%= link_to 'Back', microposts_path %>
+				<% if current_user?(@user) || current_user.following?(@user) %>
+
+					<div class ="comment">
+						<%= render 'shared/comment_form' %>
+					</div>
+
+				<% else %>
+					<span> leaving your comment? please go to <strong><%= link_to "My Profile", @microposts.user %></strong> and follow me (~_~) </span>
+				<% end %>
+
+
+			<% else %>
+				please <%= link_to "login", login_path %> to leave your comment!
+
+			<% end %>
+
+		</div>
+		<div class="col-lg-6">
+			<h2> Comment for this Entry </h2>
+
+			<% if @comments.any? %>
+
+				<% @comments.each do |comment| %>
+				<div class= "microposts">
+					
+					<li id="comment-<%= comment.id%>">
+					  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+					  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+
+					  <span class="content">
+
+					    <%= comment.content %>
+					    
+					  </span>
+					  <span class="timestamp">
+					    Posted <%= time_ago_in_words(comment.created_at) %> ago. 
+					  </span>
+					</li>
+				</div>
+
+				<% end %>
+			<%= will_paginate @comments %>
+			<% end %>
+		</div>
+	</div>
+</div>

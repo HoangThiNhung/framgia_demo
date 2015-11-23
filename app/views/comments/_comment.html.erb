@@ -1,12 +1,10 @@
-<li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-<span class="title">
-    <%= link_to micropost.title, micropost%> <br>
-  </span>
+<h2> Comment for this Entry </h2>
+<li id="comment-<%= comment.id %>">
+  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+
   <span class="content">
 
-    <%= micropost.content %>
-    <%= image_tag micropost.picture.url if micropost.picture? %>
+    <%= comment.content %>
     
   </span>
   <span class="timestamp">

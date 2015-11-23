@@ -7,9 +7,9 @@ class MicropostsController < ApplicationController
 	    if @micropost.save
 	      flash[:success] = "Micropost created!"
 	      redirect_to root_url
-	    else
-	      @feed_items = []
-	      render 'static_pages/home'
+	    # else
+	    #   @feed_items = []
+	    #   render 'static_pages/home'
 	    end
   	end
 
@@ -19,10 +19,21 @@ class MicropostsController < ApplicationController
 	    redirect_to request.referrer || root_url
   	end
 
+  	def show
+  		@microposts = Micropost.find(params[:id])
+  		@user = User.find(@microposts.user_id)
+  		@comments = @microposts.comments.paginate(page: params[:page], per_page: 5)
+
+  		if logged_in?
+	      @comment  = current_user.comments.build
+	    end
+    	#@microposts = @user.microposts.paginate(page: params[:page])
+  	end
+
   	private
 
 	    def micropost_params
-      		params.require(:micropost).permit(:content, :picture)
+      		params.require(:micropost).permit(:content, :picture, :title)
     	end
 
 	    def correct_user

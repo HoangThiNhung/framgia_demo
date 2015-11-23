@@ -32,6 +32,7 @@ section {
 
 textarea {
   resize: vertical;
+  height: 150px;
 }
 
 .center {
@@ -260,6 +261,14 @@ input {
       padding: 5px 0;
     }
   }
+
+  .title {
+    display: block;
+    margin-left: 60px;
+    font-size: 16px;
+  }
+
+
   .timestamp {
     color: $gray-light;
     display: block;
@@ -269,6 +278,23 @@ input {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
+  }
+}
+
+.microposts-display{
+  display: block;
+  .title {
+    font-size: 28px;
+    padding-bottom: 30px;
+    .timestamp {
+      font-size: 12px;
+      margin-top:20px;
+    }
+  }
+  .content {
+    font-size: 16px;
+    line-height: 15px;
+    padding-bottom: 15px;
   }
 }
 
