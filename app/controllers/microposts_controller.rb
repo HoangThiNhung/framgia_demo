@@ -25,7 +25,7 @@ class MicropostsController < ApplicationController
   		@comments = @microposts.comments.paginate(page: params[:page], per_page: 5)
 
   		if logged_in?
-	      @comment  = current_user.comments.build
+	      @comment_new  = current_user.comments.build
 	    end
     	#@microposts = @user.microposts.paginate(page: params[:page])
   	end

@@ -8,7 +8,11 @@ class CommentsController < ApplicationController
 
 	    if @comment.save
 	      flash[:success] = "Comment created!"
-	      redirect_to request.referrer || root_url
+	      respond_to do |format|
+		      format.html { redirect_to request.referrer || root_url }
+		      format.js
+		  end
+	      # redirect_to request.referrer || root_url
 	    else
 	      @feed_items = []
 	      render 'static_pages/home'

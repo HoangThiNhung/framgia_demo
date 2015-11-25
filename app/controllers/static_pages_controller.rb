@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page])
       
 
-      @comment  = current_user.comments.build
+      @comment_new  = current_user.comments.build
     else
       @feed_items = Micropost.paginate(page: params[:page])
       #@comments = @feed_items.comments.paginate(page: params[:page], per_page: 5)
