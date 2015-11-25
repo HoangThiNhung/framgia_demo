@@ -1,2 +1,2 @@
-// $("#comment_new").append('<%= @comment.content %> <br/>');
-$("#comment_new").append('<div style="padding: 15px"> <div class="content"> <%= @comment.content %></div> <span class="timestamp">Posted less than a minute ago. Comment by <span class="user"><%= link_to current_user.name, current_user %></span></span></div> <br/>');
+$(".micropost-<%= @comment.micropost_id %>-<%= @comment.micropost.comments.count - 1 %>").
+	append("<%= j render "comments/comment", comment: @comment, index: @comment.micropost.comments.count %>")

@@ -220,6 +220,7 @@ DEPENDENCIES
   mini_magick (= 3.8.0)
   minitest-reporters
   pg (= 0.17.1)
+  pry
   puma (= 2.11.1)
   rails (= 4.2.4)
   rails_12factor (= 0.0.2)

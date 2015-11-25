@@ -1,5 +1,4 @@
-
-<li id="comment-<%= comment.id%>">
+<div id="comment-<%= comment.id%>" class="micropost-<%= comment.micropost_id %>-<%= index %>">
   <div style="padding: 15px">
     <div class="content">
       <%= comment.content %>
@@ -8,4 +7,4 @@
       Posted <%= time_ago_in_words(comment.created_at) %> ago. Comment by <span class="user"><%= link_to comment.user.name, comment.user %></span>
     </span>
   </div>
-</li>
+</div>
