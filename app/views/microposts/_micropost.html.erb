@@ -17,4 +17,38 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+  <div class="row">
+
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <% micropost.comments.each do |comment| %>
+            <div style="padding: 15px">
+              <div class="content">
+                <%= comment.content %>
+              </div>
+              <span class="timestamp">
+                Posted <%= time_ago_in_words(comment.created_at) %> ago. Comment by <span class="user"><%= link_to comment.user.name, comment.user %></span>
+              </span>
+            </div>
+        <% end %>
+    </div>
+  </div>
+  <% if logged_in? %>
+
+    <% if current_user?(@user) || current_user.following?(@user) %>
+
+      <div class ="content" style="padding-top:20px">
+          <%= form_for @comment, :url => {:action=>"create", :controller=>"comments", :micropost_id=>micropost.id} do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+
+
+
+            <div class="field">
+              <%= f.text_field :content, placeholder: "Compose new comment...", class: "form-control" %>
+            </div>
+            
+          <% end %>
+      </div>
+    <% end %>
+  <% end %>
 </li>

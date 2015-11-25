@@ -44,13 +44,11 @@
 		</div>
 		<div class="col-lg-6">
 			<h2> Comment for this Entry </h2>
-
 			<% if @comments.any? %>
 
-				<% @comments.each do |comment| %>
-				<div class= "microposts">
-					
-					<li id="comment-<%= comment.id%>">
+			    <% @comments.each do |comment| %>
+			    <div class= "microposts">						      
+			      <li id="comment-<%= comment.id%>">
 					  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
 					  <span class="user"><%= link_to comment.user.name, comment.user %></span>
 
@@ -63,11 +61,12 @@
 					    Posted <%= time_ago_in_words(comment.created_at) %> ago. 
 					  </span>
 					</li>
-				</div>
+			    </div>
 
-				<% end %>
-			<%= will_paginate @comments %>
+			    <% end %>
+			  	<%= will_paginate @comments %>
 			<% end %>
+			
 		</div>
 	</div>
 </div>

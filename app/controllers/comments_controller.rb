@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = current_user.comments.build(comment_params)
-		@comment.micropost = Micropost.find(params[:id])
+		@comment.micropost = Micropost.find(params[:micropost_id])
 
 	    if @comment.save
 	      flash[:success] = "Comment created!"
