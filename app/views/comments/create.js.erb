@@ -1,2 +1,3 @@
-$(".micropost-<%= @comment.micropost_id %>-<%= @comment.micropost.comments.count - 1 %>").
+$("#comment-new-<%= @comment.micropost_id%>").
 	append("<%= j render "comments/comment", comment: @comment, index: @comment.micropost.comments.count %>")
+$('#new_comment_<%= @comment.micropost_id%>').val('');

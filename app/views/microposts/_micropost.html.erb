@@ -22,10 +22,13 @@
 
   <div class="row">
 
-      tesst
+    
+
       <% micropost.comments.each_with_index do |comment, index| %>
           <%= render "comments/comment", comment: comment, index: index + 1 %>
         <% end %>
+      <div id="comment-new-<%=micropost.id %>"></div>
+
     
   </div>
 
@@ -40,7 +43,8 @@
 
 
             <div class="field">
-              <%= f.text_field :content, placeholder: "Compose new comment...", class: "form-control" %>
+              <%= f.text_field :content, placeholder: "Compose new comment...", class: "form-control", 
+               id: "new_comment_#{micropost.id}" %>
             </div>
 
             <%= f.submit "Send comment", class: "btn btn-primary" , id: "btn-submit" %>

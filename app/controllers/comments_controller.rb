@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
 		@comment.micropost = Micropost.find(params[:micropost_id])
 
 	    if @comment.save
-	      flash[:success] = "Comment created!"
 	      respond_to do |format|
 		      format.html { redirect_to request.referrer || root_url }
 		      format.js
